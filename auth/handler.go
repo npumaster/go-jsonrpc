@@ -40,6 +40,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(401)
 			return
 		}
+
 		values := make(map[string]any)
 		values["token"] = token
 		values["perms"] = allow
