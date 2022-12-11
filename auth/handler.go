@@ -40,8 +40,10 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(401)
 			return
 		}
-
-		ctx = WithPerm(ctx, token, allow)
+		values := make(map[string]any)
+		values["token"] = token
+		values["perms"] = allow
+		ctx = WithPerm(ctx, token, values)
 	}
 
 	h.Next(w, r.WithContext(ctx))

@@ -9,8 +9,8 @@ import (
 
 type Permission string
 
-func WithPerm(ctx context.Context, token string, perms []Permission) context.Context {
-	return context.WithValue(ctx, token, perms)
+func WithPerm(ctx context.Context, key string, value any) context.Context {
+	return context.WithValue(ctx, key, value)
 }
 
 func HasPerm(ctx context.Context, token string, defaultPerms []Permission, perm Permission) bool {
