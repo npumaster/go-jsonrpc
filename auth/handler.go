@@ -44,7 +44,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		values := make(map[string]any)
 		values["token"] = token
 		values["perms"] = allow
-		ctx = WithPerm(ctx, "token", values)
+		ctx = WithPerm(ctx, "params", values)
 	}
 
 	h.Next(w, r.WithContext(ctx))
